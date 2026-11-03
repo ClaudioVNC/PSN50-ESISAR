@@ -1,0 +1,62 @@
+# Real-Time Camera Filter System on Zynq-7000
+
+## Project Overview
+
+This project aims to build a real-time camera filter system for a Zynq-7000-series platform. It will offer three image filters and use the FPGA board's buttons to let the user switch between them.
+
+The target Zynq device has not been selected yet and is listed as **XXX** for now. The exact board, camera interface, and implementation details will be defined later.
+
+## How It Is Intended to Work
+
+The system is designed to prepare all three filtered versions of each captured frame in parallel. When the user presses a button on the FPGA board, the display should switch to the corresponding filter without waiting for that filter to be computed.
+
+The planned processing flow is:
+
+1. Capture a frame from the camera.
+2. Make the frame available to three concurrent filter-processing tasks.
+3. Generate one filtered version for each of the three filter options.
+4. Read the user's filter selection from the FPGA board's buttons.
+5. Display the most recently available frame using the selected filter.
+
+Preparing the filter outputs in parallel is intended to make filter selection feel immediate. Actual response time will depend on the final hardware, software, and display pipeline.
+
+## Planned Architecture
+
+- **Camera capture:** Receives image frames from the camera.
+- **Parallel filter processing:** Computes the three filter outputs concurrently, using threads or another suitable parallel execution model.
+- **Button input:** Detects the user's selection on the FPGA board.
+- **Output selection and display:** Shows the selected filter's output and switches when the user presses a different button.
+
+The implementation will need to coordinate captured frames, filter results, and button events so the display uses a consistent, recent frame.
+
+## Hardware
+
+| Component | Status |
+| --- | --- |
+| FPGA / SoC | Zynq-7000 series |
+| Exact Zynq model | XXX (to be determined) |
+| Camera | To be determined |
+| Filter selection | FPGA board buttons |
+| Display or video output | To be determined |
+
+## Filter Options
+
+The system will provide three selectable filters. Their specific effects have not been defined yet:
+
+1. Filter 1 — TBD
+2. Filter 2 — TBD
+3. Filter 3 — TBD
+
+## Project Status
+
+This repository currently contains the project overview. The target board, camera, filter algorithms, software and FPGA partitioning, and build instructions are still to be determined.
+
+## Future Work
+
+- Select the exact Zynq-7000 device and development board.
+- Choose and integrate a compatible camera and video output.
+- Define the three filter algorithms.
+- Decide which tasks will run in software and which, if any, will be implemented in programmable logic.
+- Implement and synchronize the concurrent frame-processing pipeline.
+- Map the FPGA buttons to the three filter selections.
+- Measure frame rate, latency, and filter-switching response on the target hardware.
