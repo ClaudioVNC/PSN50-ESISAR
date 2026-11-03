@@ -34,7 +34,6 @@ The implementation will need to coordinate captured frames, filter results, and 
 | Component | Status |
 | --- | --- |
 | FPGA / SoC | Zynq-7000 series |
-| Exact Zynq model | XXX (to be determined) |
 | Camera | To be determined |
 | Filter selection | FPGA board buttons |
 | Display or video output | To be determined |
@@ -43,9 +42,9 @@ The implementation will need to coordinate captured frames, filter results, and 
 
 The system will provide three selectable filters. Their specific effects have not been defined yet:
 
-1. Filter 1 — TBD
-2. Filter 2 — TBD
-3. Filter 3 — TBD
+1. Filter 1 — GrayScale
+2. Filter 2 — Blur
+3. Filter 3 — Stretch
 
 ## Project Status
 
